@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ********* Root Variables ***** */
+:root{
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --color-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --card-border-radius: 1.5rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+
+    /* Light theme modal styles */
+    --modal-bg: #fff; /* Modal background */
+    --modal-text: #333; /* Modal text color */
+    --modal-header-bg: #f8f9fa; /* Modal header background */
+    --modal-header-text: #333; /* Modal header text color */
+    --modal-border: #ddd; /* Modal border color */
+
+     /* Light theme table styles */
+     --table-bg: #fff; /* Table background */
+     --table-text: #333; /* Table text color */
+     --table-border: #ddd; /* Table border color */
+     --table-header-bg: #f8f9fa; /* Table header background */
+     --table-header-text: #333; /* Table header text color */
+}
+
+/* ------- Dark theme vaiables -------- */
+.dark-theme-variables {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0,0,0,0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+
+    /* Dark theme modal styles */
+    --modal-bg: #2d2d2d; /* Dark modal background */
+    --modal-text: #f8f9fa; /* Light modal text color */
+    --modal-header-bg: #1f1f1f; /* Dark modal header background */
+    --modal-header-text: #f8f9fa; /* Light modal header text color */
+    --modal-border: #444; /* Dark modal border color */
+
+    /* Dark theme table styles */
+    --table-bg: #2d2d2d; /* Dark table background */
+    --table-text: #f8f9fa; /* Light text color */
+    --table-border: #444; /* Dark border color */
+    --table-header-bg: #1f1f1f; /* Dark header background */
+    --table-header-text: #f8f9fa; /* Light header text color */
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: poppins, sans-serif;
+    font-size: 0.88rem;
+    background: var(--color-background);
+    user-select: none;
+    /* overflow: hidden; */
+    color: var(--color-dark);
+    
+}
+
+a{
+    color: var(--color-dark);
+}
+
+h1{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2{
+    font-size: 1.4rem;
+}
+
+h3{
+    font-size: 0.8rem;
+}
+
+h4{
+    font-size: 0.8rem;
+}
+
+h5{
+    font-size: 0.77rem;
+}
+
+small{
+    font-size: 0.75rem;
+}
+
+.text-muted{
+    color: var(--color-info-dark);
+}
+
+p{
+    color: var(--color-dark-variant);
+}
+
+b{
+    color: var(--color-dark);
+}
+
+.primary{
+    color: var(--color-primary);
+}
+
+.danger{
+    color: var(--color-danger);
+}
+
+.success{
+    color: var(--color-success);
+}
+
+.warning{
+    color: var(--color-warning);
+}
+
+
+
+/* Header Styles */
+.header-container {
+    background: var(--color-white);
+    padding: 1rem 0;
+    box-shadow: var(--box-shadow);
+    z-index: 1000;
+    height: 60px;
+}
+
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem !important;
+    gap: 1rem;
+}
+
+.header-left {
+    flex-shrink: 0;
+}
+
+.logo {
+    width: 240px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebarCollapse span {
+    color: var(--color-primary);
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: 1.5rem;
+}
+
+/* Navbar Items */
+.navbar-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Theme Toggler */
+.theme-toggler {
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.theme-toggler span {
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggler span.active {
+    background: var(--color-primary);
+    color: white;   
+    border-radius: var(--border-radius-1);
+}
+
+
+/* Dark Theme Overrides */
+.dark-theme-variables .header-container {
+    background: var(--color-white);
+    box-shadow: var(--box-shadow);
+}
+
+.dark-theme-variables .logo,
+.dark-theme-variables .profile .info p {
+    color: var(--color-dark);
+}
+
+.dark-theme-variables .profile .info small {
+    color: var(--color-dark-variant);
+}
+
+
+/* Sidebar Styles */
+.left-menu {
+    position: fixed;
+    left: 0;
+    top: 60px; /* Match header height */
+    height: calc(100vh - 60px);
+    background: var(--color-white);
+    width: 250px;
+    padding: var(--padding-1);
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    z-index: 998;
+    box-shadow: var(--box-shadow);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none !important;
+    padding: var(--padding-1);
+    border-radius: var(--border-radius-1);
+    color: var(--color-dark-variant);
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: var(--color-light);
+    margin-left: 0.5rem;
+}
+
+.sidebar a.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.sidebar a.active::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    height: 100%;
+    width: 0.5rem;
+    background: var(--color-primary);
+    border-radius: 0 var(--border-radius-1) var(--border-radius-1) 0;
+}
+
+.sidebar .material-symbols-sharp {
+    font-size: 1.4rem;
+    min-width: 2rem;
+    text-decoration: none;
+}
+
+.sidebar a h3 {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Dark Theme Adjustments */
+.dark-theme-variables .left-menu {
+    background: var(--color-white);
+}
+
+.dark-theme-variables .sidebar a {
+    color: var(--color-dark);
+}
+
+.dark-theme-variables .sidebar a:hover {
+    background: var(--color-light);
+}
+
+.dark-theme-variables .sidebar a.active {
+    color: var(--color-white);
+}
+
+/* Dashboard Content */
+.content-wrapper {
+    margin-left: 250px;
+    padding: 2rem;
+    margin-top: 60px;
+    transition: all 0.3s ease;
+    
+}
+
+
+
+.dashboard-top h1 {
+    margin-bottom: 2rem;
+}
+
+.insights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+.insights > div {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+}
+
+.insights > div:hover {
+    transform: translateY(-5px);
+    box-shadow: none;
+}
+
+.insights > div span {
+    background: var(--color-primary);
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 2rem;
+}
+
+.insights > div.account span {
+    background: var(--color-success);
+}
+
+.insights > div.balance span {
+    background: var(--color-warning);
+}
+
+
+.insights > div.transaction span {
+    background: var(--color-danger);
+}
+
+
+
+.insights .middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.insights .left h3 {
+    margin: 1rem 0 0.6rem;
+    font-size: 1rem;
+}
+
+
+/* Dark Theme Adjustments */
+.dark-theme-variables .insights > div {
+    background: var(--color-white);
+    box-shadow: var(--box-shadow);
+}
+
+.dark-theme-variables .insights .left h3 {
+    color: var(--color-dark);
+}
+
+.modal-content {
+    background-color: var(--modal-bg);
+    color: var(--modal-text);
+    border: 1px solid var(--modal-border);
+}
+
+.modal-header {
+    background-color: var(--modal-header-bg);
+    color: var(--modal-header-text);
+    border-bottom: 1px solid var(--modal-border);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--modal-border);
+}
+
+.modal-body {
+    background-color: var(--modal-bg);
+    color: var(--modal-text);
+}
+
+/* Style form elements in dark theme */
+.dark-theme-variables .form-control {
+    background-color: var(--modal-bg);
+    color: var(--modal-text);
+    border-color: var(--modal-border);
+}
+
+.dark-theme-variables .form-control:focus {
+    background-color: var(--modal-bg);
+    color: var(--modal-text);
+    border-color: var(--color-primary);
+}
+
+.dark-theme-variables .form-label {
+    color: var(--modal-text);
+}
+
+
+#myTable {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 1px solid var(--table-border);
+    color: var(--table-text);
+    background-color: var(--table-bg);
+}
+
+#myTable th,
+#myTable td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid var(--table-border);
+}
+
+#myTable th {
+    background-color:var(--table-header-bg);
+    color: var(--table-header-text);
+    font-weight: bold;
+}
+
+#myTable tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
+}
+
+.dark-theme-variables table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Dark hover effect */
+}
+
+/* Style the "Show entries" dropdown */
+.dataTables_length select {
+    padding: 0.5rem; /* Add padding */
+    margin-bottom: 2rem;
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* Background color */
+    font-size: 14px; /* Font size */
+    color: #333; /* Text color */
+}
+
+/* Style the search bar */
+.dataTables_filter input {
+    padding: 1.5rem; /* Add padding */
+    margin-bottom: 2rem;
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* Background color */
+    font-size: 14px; /* Font size */
+    color: #333; /* Text color */
+    width: 200px; /* Set width */
+}
+
+.dark-theme-variables .dataTables_length select,
+.dark-theme-variables .dataTables_filter input {
+    background-color: #333;
+    border-color: #555;
+    color: #fff;
+}
+
+.dark-theme-variables .dataTables_length label,
+.dark-theme-variables .dataTables_filter label {
+    color: #ddd;
+}
+
+/* Add these styles to your existing CSS file */
+
+/* Light theme table styles */
+#transactionTable {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 1px solid var(--table-border);
+    color: var(--table-text);
+    background-color: var(--table-bg);
+}
+
+#transactionTable th,
+#transactionTable td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid var(--table-border);
+}
+
+#transactionTable th {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+    font-weight: bold;
+}
+
+#transactionTable tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Dark theme table styles */
+.dark-theme-variables #transactionTable {
+    background-color: var(--table-bg);
+    color: var(--table-text);
+    border-color: var(--table-border);
+}
+
+.dark-theme-variables #transactionTable th,
+.dark-theme-variables #transactionTable td {
+    border-color: var(--table-border);
+    color: var(--table-text);
+}
+
+.dark-theme-variables #transactionTable th {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+}
+
+.dark-theme-variables #transactionTable tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* DataTable controls styling */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+    color: var(--table-text);
+}
+
+.dark-theme-variables .dataTables_wrapper .dataTables_length,
+.dark-theme-variables .dataTables_wrapper .dataTables_filter,
+.dark-theme-variables .dataTables_wrapper .dataTables_info,
+.dark-theme-variables .dataTables_wrapper .dataTables_processing,
+.dark-theme-variables .dataTables_wrapper .dataTables_paginate {
+    color: var(--table-text);
+}
+
+/* Pagination buttons */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: var(--table-text) !important;
+    border: 1px solid var(--table-border);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--color-primary) !important;
+    color: white !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: 1px solid var(--color-primary);
+}
+
+/* Search and length controls */
+.dataTables_wrapper .dataTables_filter input {
+    background-color: var(--table-bg);
+    color: var(--table-text);
+    border: 1px solid var(--table-border);
+}
+
+.dataTables_wrapper .dataTables_length select {
+    background-color: var(--table-bg);
+    color: var(--table-text);
+    border: 1px solid var(--table-border);
+}
+
+/* Dark theme specific overrides */
+.dark-theme-variables .dataTables_wrapper .dataTables_filter input,
+.dark-theme-variables .dataTables_wrapper .dataTables_length select {
+    background-color: var(--color-white);
+    color: var(--color-dark);
+}
+
+.dark-theme-variables .dataTables_wrapper .dataTables_filter label,
+.dark-theme-variables .dataTables_wrapper .dataTables_length label {
+    color: var(--color-dark);
+}
+
+
+/* Responsive Adjustments */
+
+@media (max-width: 1200px) {
+    .insights {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .insights > div {
+        margin-bottom: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0 1rem;
+    }
+
+    .search-bar {
+        margin: 0 1rem;
+        max-width: 500px;
+    }
+    
+    .search-container input {
+        padding-left: 2rem;
+    }
+    
+    .search-container .material-symbols-sharp {
+        left: 0.5rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .sidebarCollapse span {
+        font-size: 1.5rem;
+    }
+    
+    .profile .info {
+        display: none;
+    }
+
+    .left-menu {
+        width: 80px;
+    }
+    
+    .sidebar h3 {
+        display: none;
+    }
+    
+    .sidebar a {
+        justify-content: center;
+        padding: 1rem;
+    }
+    
+    .sidebar a:hover {
+        margin-left: 0;
+    }
+    
+    .sidebar a.active::before {
+        display: none;
+    }
+
+    .content-wrapper {
+        margin-left: 80px;
+        padding: 1rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    thead th {
+        font-size: 0.8rem;
+        padding: 0.8rem;
+    }
+    
+    tbody td {
+        font-size: 0.8rem;
+        padding: 0.8rem;
+    }
+
+    .dataTables_filter input {
+
+        width: 200px; 
+        margin-right: 2rem;
+    }
+}
